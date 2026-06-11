@@ -1,0 +1,142 @@
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+}
+
+.progress {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.progressTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progressLabel {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.progressPct {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+.progressBar {
+  background: var(--gray-100);
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--green-600);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.allDone {
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  color: var(--green-700);
+  font-weight: 500;
+}
+
+.goalList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goalItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  transition: border-color var(--transition);
+}
+
+.goalItem.done {
+  border-color: var(--green-200);
+  background: var(--green-50);
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--gray-300);
+  background: transparent;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: transparent;
+  transition: all var(--transition);
+  margin-top: 1px;
+}
+
+.checkbox.checked {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: var(--white);
+}
+
+.goalContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.goalText {
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: var(--gray-400);
+}
+
+.category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.catGreen  { background: var(--green-100); color: var(--green-800); }
+.catAmber  { background: #fef3c7; color: #92400e; }
+.catTeal   { background: #ccfbf1; color: #0f5b52; }
+.catPurple { background: #ede9fe; color: #5b21b6; }

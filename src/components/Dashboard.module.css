@@ -1,0 +1,196 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--gray-500);
+}
+
+.recalcBtn {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  color: var(--gray-600);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.recalcBtn:hover {
+  background: var(--gray-50);
+  color: var(--gray-800);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metricCard {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.125rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metricLabel {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metricValue {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.1;
+}
+
+.metricUnit {
+  font-size: 0.8125rem;
+  color: var(--gray-400);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 1.25rem;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 130px 1fr 56px;
+  align-items: center;
+  gap: 10px;
+}
+
+.barLabel {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+
+.barTrack {
+  background: var(--gray-100);
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.barVal {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  text-align: right;
+}
+
+.scoreWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.scoreRating {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: -4px;
+}
+
+.scoreNote {
+  font-size: 0.8125rem;
+  color: var(--gray-400);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.empty {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.emptySub {
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+}
+
+.actionBtn {
+  background: var(--green-700);
+  color: var(--white);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.actionBtn:hover { background: var(--green-800); }
+
+@media (max-width: 700px) {
+  .mainGrid { grid-template-columns: 1fr; }
+  .barRow { grid-template-columns: 100px 1fr 48px; }
+}

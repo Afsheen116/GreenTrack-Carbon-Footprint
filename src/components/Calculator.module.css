@@ -1,0 +1,97 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.fieldCard {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.fieldHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.fieldLabel {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fieldValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--green-700);
+  background: var(--green-50);
+  padding: 2px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--green-600);
+  height: 4px;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  color: var(--gray-400);
+}
+
+.calcBtn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  background: var(--green-700);
+  color: var(--white);
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background var(--transition);
+}
+
+.calcBtn:hover { background: var(--green-800); }
+.calcBtn:active { transform: scale(0.98); }
+
+@media (max-width: 480px) {
+  .calcBtn { max-width: 100%; }
+}
