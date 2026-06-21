@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
-import Calculator from './components/Calculator'
-import Dashboard from './components/Dashboard'
-import Tips from './components/Tips'
-import Goals from './components/Goals'
 import { calculateFootprint } from './utils/carbonCalculator'
+
+const Calculator = lazy(() => import('./components/Calculator'))
+const Dashboard = lazy(() => import('./components/Dashboard'))
+const Tips = lazy(() => import('./components/Tips'))
+const Goals = lazy(() => import('./components/Goals'))
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -48,7 +49,9 @@ export default function App() {
   return (
     <>
       <Navbar activeTab={activeTab} onTabChange={handleTabChange} />
-      {renderTab()}
+      <Suspense fallback={<div role="status" aria-live="polite" style={{ padding: '3rem', textAlign: 'center' }}>Loading…</div>}>
+        {renderTab()}
+      </Suspense>
     </>
   )
 }
