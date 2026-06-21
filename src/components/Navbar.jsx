@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './Navbar.module.css'
 
 const tabs = [
@@ -41,4 +42,9 @@ export default function Navbar({ activeTab, onTabChange }) {
       </div>
     </header>
   )
+}
+
+Navbar.propTypes = {
+  activeTab: PropTypes.string.isRequired,
+  onTabChange: PropTypes.func.isRequired,
 }

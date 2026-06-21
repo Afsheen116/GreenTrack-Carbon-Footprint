@@ -60,48 +60,52 @@ export function getScoreRating(score) {
 }
 
 /**
+ * Static tip content, keyed by emission category.
+ * Defined once at module scope to avoid re-allocating on every call.
+ */
+const TIP_CONTENT = {
+  transport: {
+    icon: '🚌',
+    title: 'Try public transport or carpooling',
+    desc: 'Switching to bus or metro even 3 days a week can cut your transport emissions by 30-40%.',
+    impact: 'High impact',
+  },
+  flights: {
+    icon: '🛤️',
+    title: 'Choose trains over short flights',
+    desc: 'A train emits up to 90% less CO2 than a flight for the same journey. Consider train travel for trips under 600 km.',
+    impact: 'High impact',
+  },
+  electricity: {
+    icon: '💡',
+    title: 'Switch to LED and unplug standby devices',
+    desc: 'LEDs use 75% less energy. Unplugging devices on standby can save 10% on your electricity bill.',
+    impact: 'Medium impact',
+  },
+  gas: {
+    icon: '☀️',
+    title: 'Consider a solar water heater',
+    desc: 'A solar water heater can replace 60-80% of your LPG usage for hot water, paying back in 3-4 years.',
+    impact: 'Medium impact',
+  },
+  food: {
+    icon: '🥗',
+    title: 'Add 2 plant-based meals per week',
+    desc: 'Replacing 2 meat meals per week with plant-based alternatives saves approx. 0.34 tonnes CO2 per year.',
+    impact: 'High impact',
+  },
+  shopping: {
+    icon: '♻️',
+    title: 'Buy second-hand or repair before replacing',
+    desc: 'The fashion industry produces 10% of global emissions. Thrifting one item saves ~20 kg CO2 on average.',
+    impact: 'Medium impact',
+  },
+}
+
+/**
  * Returns static tips based on the highest emission category
  */
 export function getStaticTips(breakdown) {
   const sorted = Object.entries(breakdown).sort((a, b) => b[1] - a[1])
-  const tips = {
-    transport: {
-      icon: '🚌',
-      title: 'Try public transport or carpooling',
-      desc: 'Switching to bus or metro even 3 days a week can cut your transport emissions by 30-40%.',
-      impact: 'High impact',
-    },
-    flights: {
-      icon: '🛤️',
-      title: 'Choose trains over short flights',
-      desc: 'A train emits up to 90% less CO2 than a flight for the same journey. Consider train travel for trips under 600 km.',
-      impact: 'High impact',
-    },
-    electricity: {
-      icon: '💡',
-      title: 'Switch to LED and unplug standby devices',
-      desc: 'LEDs use 75% less energy. Unplugging devices on standby can save 10% on your electricity bill.',
-      impact: 'Medium impact',
-    },
-    gas: {
-      icon: '☀️',
-      title: 'Consider a solar water heater',
-      desc: 'A solar water heater can replace 60-80% of your LPG usage for hot water, paying back in 3-4 years.',
-      impact: 'Medium impact',
-    },
-    food: {
-      icon: '🥗',
-      title: 'Add 2 plant-based meals per week',
-      desc: 'Replacing 2 meat meals per week with plant-based alternatives saves approx. 0.34 tonnes CO2 per year.',
-      impact: 'High impact',
-    },
-    shopping: {
-      icon: '♻️',
-      title: 'Buy second-hand or repair before replacing',
-      desc: 'The fashion industry produces 10% of global emissions. Thrifting one item saves ~20 kg CO2 on average.',
-      impact: 'Medium impact',
-    },
-  }
-
-  return sorted.map(([key]) => tips[key]).filter(Boolean)
+  return sorted.map(([key]) => TIP_CONTENT[key]).filter(Boolean)
 }

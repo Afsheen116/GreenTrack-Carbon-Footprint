@@ -55,7 +55,7 @@ export default function Goals() {
         </div>
         {completed.size === DEFAULT_GOALS.length && (
           <p className={styles.allDone} role="status">
-            🎉 Amazing! You've completed all goals this week!
+            🎉 Amazing! You&apos;ve completed all goals this week!
           </p>
         )}
       </div>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import PropTypes from 'prop-types'
 import { GLOBAL_AVERAGE_TONNES, INDIA_AVERAGE_TONNES, calculateScore, getScoreRating } from '../utils/carbonCalculator'
 import styles from './Dashboard.module.css'
 
@@ -11,7 +12,17 @@ const categoryMeta = {
   shopping:    { label: 'Shopping',      icon: '👕', color: '#7c3aed' },
 }
 
-export default function Dashboard({ result, onRecalculate }) {
+export default function Dashboard({ result = null, onRecalculate }) {
+  const sortedBreakdown = useMemo(() => {
+    if (!result) return []
+    return Object.entries(result.breakdown).sort((a, b) => b[1] - a[1])
+  }, [result])
+
+  const maxVal = useMemo(() => {
+    if (!result) return 0
+    return Math.max(...Object.values(result.breakdown))
+  }, [result])
+
   if (!result) {
     return (
       <main id="main" className={styles.page} tabIndex="-1">
@@ -25,14 +36,13 @@ export default function Dashboard({ result, onRecalculate }) {
     )
   }
 
-  const { breakdown, total } = result
+  const { total } = result
   const score = calculateScore(total)
   const rating = getScoreRating(score)
-  const maxVal = Math.max(...Object.values(breakdown))
   const circumference = 2 * Math.PI * 52
   const dashOffset = circumference * (1 - score / 100)
-  const vsGlobal = (((total - GLOBAL_AVERAGE_TONNES) / GLOBAL_AVERAGE_TONNES) * 100).toFixed(0)
-  const vsIndia = (((total - INDIA_AVERAGE_TONNES) / INDIA_AVERAGE_TONNES) * 100).toFixed(0)
+  const vsGlobal = Number((((total - GLOBAL_AVERAGE_TONNES) / GLOBAL_AVERAGE_TONNES) * 100).toFixed(0))
+  const vsIndia = Number((((total - INDIA_AVERAGE_TONNES) / INDIA_AVERAGE_TONNES) * 100).toFixed(0))
 
   return (
     <main id="main" className={styles.page} tabIndex="-1">
@@ -85,8 +95,7 @@ export default function Dashboard({ result, onRecalculate }) {
         <section className={styles.card} aria-labelledby="breakdown-title">
           <h2 id="breakdown-title" className={styles.cardTitle}>Emissions by category</h2>
           <div className={styles.bars} role="list">
-            {Object.entries(breakdown)
-              .sort((a, b) => b[1] - a[1])
+            {sortedBreakdown
               .map(([key, val]) => {
                 const meta = categoryMeta[key]
                 const pct = maxVal > 0 ? Math.round((val / maxVal) * 100) : 0
@@ -148,4 +157,12 @@ export default function Dashboard({ result, onRecalculate }) {
       </div>
     </main>
   )
+}
+
+Dashboard.propTypes = {
+  result: PropTypes.shape({
+    breakdown: PropTypes.objectOf(PropTypes.number).isRequired,
+    total: PropTypes.number.isRequired,
+  }),
+  onRecalculate: PropTypes.func.isRequired,
 }

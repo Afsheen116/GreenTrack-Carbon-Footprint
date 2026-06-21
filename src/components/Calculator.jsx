@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Calculator.module.css'
 
 const fields = [
@@ -70,7 +71,7 @@ export default function Calculator({ onCalculate }) {
     <main id="main" className={styles.page} tabIndex="-1">
       <div className={styles.header}>
         <h1 className={styles.title}>Calculate your footprint</h1>
-        <p className={styles.subtitle}>Adjust the sliders to match your typical habits. We'll calculate your annual CO₂ emissions.</p>
+        <p className={styles.subtitle}>Adjust the sliders to match your typical habits. We&apos;ll calculate your annual CO₂ emissions.</p>
       </div>
 
       <form onSubmit={handleSubmit} noValidate aria-label="Carbon footprint calculator">
@@ -117,4 +118,8 @@ export default function Calculator({ onCalculate }) {
       </form>
     </main>
   )
+}
+
+Calculator.propTypes = {
+  onCalculate: PropTypes.func.isRequired,
 }

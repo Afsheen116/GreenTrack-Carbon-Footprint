@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './Home.module.css'
 
 const stats = [
@@ -58,4 +59,8 @@ export default function Home({ onGetStarted }) {
       </section>
     </main>
   )
+}
+
+Home.propTypes = {
+  onGetStarted: PropTypes.func.isRequired,
 }

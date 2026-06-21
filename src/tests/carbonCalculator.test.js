@@ -4,7 +4,6 @@ import {
   calculateScore,
   getScoreRating,
   getStaticTips,
-  GLOBAL_AVERAGE_TONNES,
 } from '../utils/carbonCalculator'
 
 const sampleInputs = {
